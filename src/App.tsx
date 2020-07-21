@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { GuidedTourProvider } from "./guidedTour";
+import { ProductLineSelector } from "./ProductLineSelector";
+import { ProductLineTourStop } from "./guidedTour/stops/ProductLineTourStop";
+import { ProductColorSelector } from "./ProductColorSelector";
+import { Grid } from "@material-ui/core";
+import { ProductSizeSelector } from "./ProductSizeSelector";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GuidedTourProvider startWith={ProductLineTourStop}>
+        <Grid container direction="column" spacing={2}>
+          <Grid item>
+            <ProductLineSelector />
+          </Grid>
+          <Grid item>
+            <ProductColorSelector />
+          </Grid>
+          <Grid item>
+            <ProductSizeSelector />
+          </Grid>
+        </Grid>
+      </GuidedTourProvider>
     </div>
   );
 }
